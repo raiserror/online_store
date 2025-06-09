@@ -10,20 +10,18 @@
                 <div class="col-md-2 mb-4 mb-md-0">
                     <h5 class="mb-3">Меню</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="../index.html" class="text-decoration-none text-white">Главная</a></li>
+                        <li class="mb-2"><a href="{% url "main:index" %}" class="text-decoration-none text-white">Главная</a></li>
                         <li class="mb-2"><a href="../goods/catalog.html" class="text-decoration-none text-white">Каталог</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">О нас</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Контакты</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div class="col-md-2 mb-4 mb-md-0">
-                    <h5 class="mb-3">Помощь</h5>
+                    <h5 class="mb-3">Информация</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Доставка</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Оплата</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Возврат</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Доставка и оплата</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white">Контакты</a></li>
+                        <li class="mb-2"><a href="{% url "main:about" %}" class="text-decoration-none text-white">О нас</a></li>
                     </ul>
                 </div>
                 

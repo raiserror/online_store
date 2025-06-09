@@ -1,173 +1,7 @@
+{% extends "main/base.html" %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная | Mebel House</title>
-    
-    <!-- Современные зависимости -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/apple-touch-icon.png" %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "deps/favicon/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "deps/favicon/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "deps/favicon/site.webmanifest" %}">
-    
-    <style>
-        :root {
-            --primary-color: #212529;
-            --secondary-color: #343a40;
-            --accent-color: #a4a4a4;
-            --light-bg: #f8f9fa;
-            --card-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-        }
-        
-        body {
-            background-color: var(--light-bg);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 8rem 0;
-            margin-bottom: 3rem;
-        }
-
-        .product-card {
-        position: relative;
-        overflow: hidden;
-        }
-
-        .product-card img {
-            width: 100%; 
-            height: auto; 
-            max-height: 250px;
-            object-fit: cover; 
-            object-position: center;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn-dark {
-            background-color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-dark:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-1px);
-        }
-        
-        .catalog-btn {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            z-index: 1000;
-        }
-        
-        .cart-btn {
-            position: fixed;
-            top: 80px;
-            left: 120px;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            border-radius: 12px;
-        }
-        
-        main {
-            flex: 1;
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Современный хедер -->
-        <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="../index.html">
-                    <i class="bi bi-house-door me-2"></i>
-                    Mebel House
-                </a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-info-circle me-1"></i> Информация
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-truck me-2"></i>Доставка и оплата</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2"></i>Контакты</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-people me-2"></i>О нас</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="carts/cart.html">
-                                <i class="bi bi-cart3 me-1"></i>Корзина
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="users/login.html">
-                                <i class="bi bi-box-arrow-in-right me-1"></i>Войти
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <form class="d-flex ms-auto me-3" role="search">
-                        <div class="input-group">
-                            <input class="form-control" type="search" placeholder="Поиск..." aria-label="Search">
-                            <button class="btn btn-outline-light" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </form>
-                    
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle fs-4 me-1"></i>
-                            <span>Профиль</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small">
-                            <li><a class="dropdown-item" href="users/profile.html"><i class="bi bi-person me-2"></i>Профиль</a></li>
-                            <li><a class="dropdown-item" href="orders/create_order.html"><i class="bi bi-receipt me-2"></i>Заказы</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="users/login.html"><i class="bi bi-box-arrow-right me-2"></i>Выйти</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+{% block title %}{% endblock title %}
+{% block content %}
     <!-- Герой-секция -->
     <section class="hero-section text-center">
         <div class="container">
@@ -285,11 +119,11 @@
             </div>
         </div>
     </main>
-    
-    <!-- Футер --> 
-    {% include 'main/footer.html' %}
+{% endblock content %}
 
-    <!-- Скрипты -->
+
+{% block scripts %}
+  <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Инициализация модального окна корзины
@@ -320,5 +154,4 @@
         // Пример: установить количество товаров в корзине
         updateCartCount(3);
     </script>
-</body>
-</html>
+{% endblock scripts %}
