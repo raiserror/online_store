@@ -1,6 +1,10 @@
 {% extends "main/base.html" %}
 {% load static %}
 
+{% block style_css %}
+    <link rel="stylesheet" href="{% static "deps/css/my_css.css" %}">
+{% endblock style_css %}
+
 {% block content %}
     <!-- Герой-секция "О нас" -->
     <section class="about-hero text-center text-white">
